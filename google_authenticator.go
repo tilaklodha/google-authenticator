@@ -77,7 +77,7 @@ func getTOTPToken(secret string) string {
 
 func main() {
 	//Read the secret token from file system
-	data, err := ioutil.ReadFile("secret.pem")
+	data, err := ioutil.ReadFile("dummy_secret.pem")
 	check(err)
 	secret := string(data)
 	otp := getTOTPToken(secret)
