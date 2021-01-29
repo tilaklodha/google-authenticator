@@ -37,7 +37,7 @@ func getHOTPToken(secret string, interval int64) string {
 
 	//Converts secret to base32 Encoding. Base32 encoding desires a 32-character
 	//subset of the twenty-six letters A–Z and ten digits 0–9
-	key, err := base32.StdEncoding.DecodeString(strings.ToUpper(secret))
+	key, err := base32.StdEncoding.WithPadding(base32.NoPadding).DecodeString(strings.ToUpper(secret))
 	check(err)
 	bs := make([]byte, 8)
 	binary.BigEndian.PutUint64(bs, uint64(interval))
